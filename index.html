@@ -5,252 +5,282 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tsutsumi — Premium Packaging Finishing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --cream:  #F3EFE8;
-  --cream2: #EDE8DF;
-  --ink:    #1C1A17;
-  --gold:   #B8922A;
-  --gold-l: #D4AF5A;
-  --mid:    #7A7060;
-  --white:  #FAFAF7;
-  --ff-en: 'Outfit', sans-serif;
+  --paper:  #F7F4EC;
+  --sand:   #EEE7D7;
+  --ink:    #25231E;
+  --moss:   #6E7958;
+  --moss-d: #535C40;
+  --clay:   #BE8C5C;
+  --mist:   #8C8878;
+  --white:  #FFFFFF;
+  --line:   rgba(37,35,30,0.1);
+  --r-lg:   22px;
+  --r-sm:   12px;
+  --ff-en: 'Hanken Grotesk', sans-serif;
   --ff-th: 'Prompt', sans-serif;
   --max: 1160px;
 }
 html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--ink);font-family:var(--ff-en);-webkit-font-smoothing:antialiased}
+body{background:var(--paper);color:var(--ink);font-family:var(--ff-en);-webkit-font-smoothing:antialiased}
 .th{font-family:var(--ff-th);font-weight:300}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+/* fold mark — the recurring signature glyph, a small folded paper corner */
+.fold{
+  position:relative;display:inline-block;width:10px;height:10px;flex-shrink:0;
+  background:var(--moss);
+  clip-path:polygon(0 0,100% 0,100% 100%);
+}
+.fold.lt{background:var(--clay)}
 
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
-  padding:20px 48px;
-  transition:background 0.4s,box-shadow 0.4s;
+  padding:26px 48px;
+  transition:background 0.4s,box-shadow 0.4s,padding 0.4s;
 }
 nav.solid{
-  background:rgba(243,239,232,0.96);
-  backdrop-filter:blur(16px);
-  box-shadow:0 1px 0 rgba(184,146,42,0.15);
+  background:rgba(247,244,236,0.92);
+  backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--line);
+  padding:16px 48px;
 }
-.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.nav-logo img{width:36px;height:36px;object-fit:contain}
+.nav-logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nav-logo img{width:32px;height:32px;object-fit:contain;border-radius:8px}
 .nav-logo-text{
-  font-family:var(--ff-en);font-size:1.2rem;letter-spacing:0.22em;
-  font-weight:300;color:var(--ink);text-transform:uppercase
+  font-family:var(--ff-en);font-size:1.05rem;letter-spacing:0.02em;
+  font-weight:600;color:var(--ink)
 }
-.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links{display:flex;gap:34px;list-style:none}
 .nav-links a{
-  font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--ink);text-decoration:none;opacity:0.55;
+  font-size:0.86rem;
+  color:var(--ink);text-decoration:none;opacity:0.62;
   transition:opacity 0.2s;font-weight:500
 }
 .nav-links a:hover{opacity:1}
 .nav-right{display:flex;align-items:center;gap:14px}
 .lang-btn{
   background:none;border:none;cursor:pointer;
-  font-size:0.72rem;letter-spacing:0.1em;font-weight:500;
-  color:var(--mid);padding:4px 0;border-bottom:1px solid transparent;
+  font-size:0.78rem;font-weight:600;
+  color:var(--mist);padding:6px 13px;border-radius:999px;
   transition:all 0.2s;font-family:var(--ff-en);
 }
-.lang-btn.on{color:var(--gold);border-color:var(--gold)}
-.lang-sep{color:var(--mid);opacity:0.35;font-size:0.7rem}
+.lang-btn.on{color:var(--white);background:var(--moss)}
+.lang-sep{display:none}
 .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
-.ham span{display:block;width:22px;height:1.5px;background:var(--ink)}
+.ham span{display:block;width:20px;height:1.5px;background:var(--ink);border-radius:1px}
 
 /* HERO */
-#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
+#hero{min-height:100vh;display:grid;grid-template-columns:1.05fr 0.95fr;align-items:center;gap:0}
 .hero-l{
   display:flex;flex-direction:column;justify-content:center;
-  padding:120px 56px 80px 80px;background:var(--cream);
+  padding:140px 56px 80px 80px;background:var(--paper);
 }
 .hero-tag{
   display:inline-flex;align-items:center;gap:10px;
-  font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:32px;font-weight:500;font-family:var(--ff-en);
+  font-size:0.8rem;text-transform:uppercase;letter-spacing:0.08em;
+  color:var(--moss-d);margin-bottom:28px;font-weight:600;font-family:var(--ff-en);
 }
-.hero-tag::before{content:'';display:block;width:28px;height:1px;background:var(--gold)}
+.hero-tag::before{content:'';display:block;width:9px;height:9px;flex-shrink:0;background:var(--moss);clip-path:polygon(0 0,100% 0,100% 100%)}
 .hero-h1{
   font-family:var(--ff-en);
-  font-size:clamp(2.8rem,5vw,4.6rem);
-  line-height:1.08;font-weight:200;
-  color:var(--ink);margin-bottom:6px;letter-spacing:-0.01em;
+  font-size:clamp(2.6rem,4.6vw,4.1rem);
+  line-height:1.06;font-weight:600;
+  color:var(--ink);margin-bottom:22px;letter-spacing:-0.02em;
 }
-.hero-h1 em{font-style:italic;color:var(--gold);font-weight:300}
+.hero-h1 em{font-style:normal;color:var(--moss);font-weight:600}
 .hero-jp{
-  font-family:var(--ff-en);font-size:0.78rem;letter-spacing:0.3em;
-  color:var(--gold);margin-bottom:36px;opacity:0.7;font-weight:300;
+  font-family:var(--ff-en);font-size:0.82rem;letter-spacing:0.18em;
+  color:var(--clay);margin-bottom:28px;opacity:0.9;font-weight:500;
 }
 .hero-sub{
   font-family:var(--ff-th);
-  font-size:0.95rem;line-height:2;color:var(--mid);
-  max-width:380px;margin-bottom:48px;font-weight:300;
+  font-size:1rem;line-height:1.85;color:var(--mist);
+  max-width:400px;margin-bottom:40px;font-weight:300;
 }
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:64px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px}
 .btn-gold{
   display:inline-flex;align-items:center;gap:8px;
-  background:var(--gold);color:#fff;padding:13px 28px;
-  font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;
-  text-decoration:none;font-weight:500;font-family:var(--ff-en);
-  transition:background 0.2s;
+  background:var(--moss);color:var(--white);padding:14px 30px;
+  font-size:0.85rem;text-decoration:none;font-weight:600;font-family:var(--ff-en);
+  border-radius:999px;transition:background 0.2s,transform 0.2s;
 }
-.btn-gold:hover{background:#9a7820}
+.btn-gold:hover{background:var(--moss-d);transform:translateY(-1px)}
 .btn-ghost{
   display:inline-flex;align-items:center;gap:8px;
-  border:1px solid rgba(184,146,42,0.4);color:var(--ink);
-  padding:13px 28px;font-size:0.75rem;letter-spacing:0.14em;
-  text-transform:uppercase;text-decoration:none;font-weight:500;
-  font-family:var(--ff-en);transition:border-color 0.2s;
+  border:1.5px solid var(--line);background:var(--white);color:var(--ink);
+  padding:14px 30px;font-size:0.85rem;
+  text-decoration:none;font-weight:600;border-radius:999px;
+  font-family:var(--ff-en);transition:border-color 0.2s,transform 0.2s;
 }
-.btn-ghost:hover{border-color:var(--gold)}
-.hero-stats{display:flex;gap:48px;padding-top:36px;border-top:1px solid rgba(184,146,42,0.2)}
-.st-n{font-family:var(--ff-en);font-size:2rem;font-weight:200;color:var(--ink)}
-.st-l{font-family:var(--ff-th);font-size:0.75rem;color:var(--mid);margin-top:4px;font-weight:300}
-.hero-r{position:relative;overflow:hidden;background:#1a1a1a}
+.btn-ghost:hover{border-color:var(--moss);transform:translateY(-1px)}
+.hero-stats{display:flex;gap:18px;padding-top:0;border-top:none}
+.hero-stats > div{
+  background:var(--white);border-radius:var(--r-sm);padding:16px 22px;
+  border:1px solid var(--line);
+}
+.st-n{font-family:var(--ff-en);font-size:1.5rem;font-weight:700;color:var(--ink)}
+.st-l{font-family:var(--ff-th);font-size:0.75rem;color:var(--mist);margin-top:2px;font-weight:300}
+.hero-r{position:relative;overflow:hidden;background:var(--sand);height:100vh;border-radius:0 0 0 48px}
 .hero-r img{width:100%;height:100%;object-fit:cover;object-position:center}
 .hero-r-badge{
-  position:absolute;bottom:48px;left:48px;
-  border:1px solid rgba(184,146,42,0.45);padding:16px 24px;
-  background:rgba(20,18,16,0.72);backdrop-filter:blur(8px);
+  position:absolute;bottom:40px;left:40px;right:40px;
+  border-radius:var(--r-sm);padding:18px 22px;
+  background:rgba(247,244,236,0.92);backdrop-filter:blur(8px);
 }
 .hero-r-badge-l1{
-  font-family:var(--ff-en);font-size:0.68rem;letter-spacing:0.22em;
-  text-transform:uppercase;color:var(--gold);margin-bottom:4px;font-weight:400;
+  font-family:var(--ff-en);font-size:0.7rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--moss-d);margin-bottom:3px;font-weight:700;
 }
-.hero-r-badge-l2{font-family:var(--ff-th);font-size:0.85rem;color:rgba(255,255,255,0.75);font-weight:300}
+.hero-r-badge-l2{font-family:var(--ff-th);font-size:0.88rem;color:var(--ink);font-weight:400}
 
 /* SECTION SHARED */
-section{padding:100px 48px}
+section{padding:108px 48px}
 .container{max-width:var(--max);margin:0 auto}
 .s-tag{
   display:inline-flex;align-items:center;gap:10px;
-  font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:18px;font-weight:500;font-family:var(--ff-en);
+  font-size:0.8rem;text-transform:uppercase;letter-spacing:0.08em;
+  color:var(--moss-d);margin-bottom:20px;font-weight:600;font-family:var(--ff-en);
 }
-.s-tag::after{content:'';display:block;width:24px;height:1px;background:var(--gold)}
+.s-tag::before{content:'';display:block;width:9px;height:9px;flex-shrink:0;background:var(--moss);clip-path:polygon(0 0,100% 0,100% 100%)}
 .s-h2{
-  font-family:var(--ff-en);font-size:clamp(2rem,3.8vw,3.2rem);
-  font-weight:200;line-height:1.12;color:var(--ink);margin-bottom:14px;letter-spacing:-0.01em;
+  font-family:var(--ff-en);font-size:clamp(1.9rem,3.4vw,2.9rem);
+  font-weight:600;line-height:1.16;color:var(--ink);margin-bottom:16px;letter-spacing:-0.015em;
 }
-.s-h2 em{font-style:italic;color:var(--gold);font-weight:300}
-.s-desc{font-family:var(--ff-th);font-size:0.95rem;line-height:2;color:var(--mid);max-width:500px;font-weight:300}
+.s-h2 em{font-style:normal;color:var(--moss);font-weight:600}
+.s-desc{font-family:var(--ff-th);font-size:1rem;line-height:1.85;color:var(--mist);max-width:520px;font-weight:300}
 
-/* SERVICES 3×2 */
-#services{background:var(--white)}
-.svc-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:56px}
+/* SERVICES grid */
+#services{background:var(--paper)}
+.svc-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:52px}
 .svc-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);
-  border-top:1px solid rgba(184,146,42,0.12);border-left:1px solid rgba(184,146,42,0.12);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
 }
 .svc-card{
-  padding:40px 32px;border-right:1px solid rgba(184,146,42,0.12);
-  border-bottom:1px solid rgba(184,146,42,0.12);transition:background 0.25s;
+  padding:34px 30px;background:var(--white);border-radius:var(--r-lg);
+  border:1px solid var(--line);transition:transform 0.25s,box-shadow 0.25s;
 }
-.svc-card:hover{background:var(--cream)}
-.svc-num{font-family:var(--ff-en);font-size:0.68rem;font-weight:500;letter-spacing:0.15em;color:var(--gold);margin-bottom:16px;display:block;opacity:0.7}
-.svc-en{font-family:var(--ff-en);font-size:1.1rem;font-weight:400;margin-bottom:4px;color:var(--ink)}
-.svc-th{font-family:var(--ff-th);font-size:0.82rem;color:var(--gold);margin-bottom:14px;display:block;font-weight:400}
-.svc-txt{font-family:var(--ff-th);font-size:0.85rem;color:var(--mid);line-height:1.9;font-weight:300}
+.svc-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px -20px rgba(37,35,30,0.25)}
+.svc-num,.svc-fold{margin-bottom:18px;display:block}
+.svc-en{font-family:var(--ff-en);font-size:1.08rem;font-weight:700;margin-bottom:3px;color:var(--ink)}
+.svc-th{font-family:var(--ff-th);font-size:0.85rem;color:var(--moss-d);margin-bottom:14px;display:block;font-weight:500}
+.svc-txt{font-family:var(--ff-th);font-size:0.88rem;color:var(--mist);line-height:1.8;font-weight:300}
 
 /* PRICING */
-#pricing{background:var(--cream2)}
-.price-head{margin-bottom:52px}
+#pricing{background:var(--sand)}
+.price-head{margin-bottom:48px}
+.price-card{background:var(--white);border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line)}
 .price-table{width:100%;border-collapse:collapse;font-family:var(--ff-th)}
-.price-table thead tr{background:var(--ink);color:#fff}
+.price-table thead tr{background:var(--moss);color:var(--white)}
 .price-table th{
-  padding:16px 28px;text-align:left;
-  font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;
-  font-family:var(--ff-en);font-weight:500;
+  padding:18px 28px;text-align:left;
+  font-size:0.78rem;text-transform:uppercase;letter-spacing:0.04em;
+  font-family:var(--ff-en);font-weight:600;
 }
-.price-table td{padding:18px 28px;border-bottom:1px solid rgba(184,146,42,0.12);font-size:0.93rem;font-weight:300}
+.price-table td{padding:20px 28px;border-bottom:1px solid var(--line);font-size:0.95rem;font-weight:300}
 .price-table tr:last-child td{border-bottom:none}
-.price-table tbody tr:hover td{background:rgba(184,146,42,0.04)}
-.price-num{font-family:var(--ff-en);font-size:1.5rem;font-weight:300;color:var(--gold)}
+.price-table tbody tr:hover td{background:var(--paper)}
+.price-num{font-family:var(--ff-en);font-size:1.4rem;font-weight:700;color:var(--moss-d)}
 .price-note{
-  font-family:var(--ff-th);font-size:0.8rem;color:var(--mid);
-  margin-top:16px;font-weight:300;display:flex;align-items:center;gap:8px;
+  font-family:var(--ff-th);font-size:0.85rem;color:var(--mist);
+  margin-top:18px;font-weight:300;display:flex;align-items:center;gap:8px;
 }
-.price-note::before{content:'*';color:var(--gold)}
+.price-note::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--clay);flex-shrink:0}
 
 /* GALLERY */
-#gallery{background:var(--ink);padding:100px 0}
-.gal-head{padding:0 48px;margin-bottom:48px}
-.gal-head .s-tag{color:var(--gold-l)}
-.gal-head .s-tag::after{background:var(--gold-l)}
-.gal-head .s-h2{color:#fff}
-.gal-head .s-desc{color:rgba(255,255,255,0.4)}
+#gallery{background:var(--ink);padding:108px 0}
+.gal-head{padding:0 48px;margin-bottom:44px}
+.gal-head .s-tag{color:#C9D1B6}
+.gal-head .s-tag::before{background:#C9D1B6}
+.gal-head .s-h2{color:var(--white)}
+.gal-head .s-desc{color:rgba(255,255,255,0.45)}
 .gal-grid{
-  display:grid;
+  display:grid;padding:0 48px;
   grid-template-columns:2fr 1fr 1fr;
   grid-template-rows:290px 290px;
-  gap:3px;
+  gap:14px;
 }
-.gi{overflow:hidden;position:relative}
+.gi{overflow:hidden;position:relative;border-radius:var(--r-lg)}
 .gi img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease}
 .gi:hover img{transform:scale(1.04)}
 .gi:nth-child(1){grid-row:1/3}
 
 /* TESTIMONIALS */
-#testimonials{background:var(--white)}
-.testi-head{margin-bottom:56px}
-.testi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(184,146,42,0.1)}
-.tc{background:var(--white);padding:40px 36px;transition:background 0.2s}
-.tc:hover{background:var(--cream)}
-.tc-q{font-family:var(--ff-en);font-size:2.8rem;line-height:1;color:var(--gold-l);opacity:0.35;margin-bottom:8px;font-weight:200}
-.tc-stars{color:var(--gold);font-size:0.72rem;margin-bottom:14px;letter-spacing:2px}
-.tc-text{font-family:var(--ff-th);font-size:0.91rem;line-height:2;color:var(--ink);margin-bottom:28px;font-weight:300}
-.tc-who{display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid rgba(184,146,42,0.1)}
-.tc-av{width:36px;height:36px;border-radius:50%;background:var(--cream2);display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0}
-.tc-name{font-size:0.85rem;font-weight:500;color:var(--ink);font-family:var(--ff-en)}
-.tc-biz{font-family:var(--ff-th);font-size:0.72rem;color:var(--mid);font-weight:300}
+#testimonials{background:var(--paper)}
+.testi-head{margin-bottom:52px}
+.testi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tc{background:var(--white);padding:36px 32px;border-radius:var(--r-lg);border:1px solid var(--line);transition:transform 0.25s}
+.tc:hover{transform:translateY(-4px)}
+.tc-q{display:none}
+.tc-stars{color:var(--clay);font-size:0.8rem;margin-bottom:16px;letter-spacing:2px}
+.tc-text{font-family:var(--ff-th);font-size:0.92rem;line-height:1.85;color:var(--ink);margin-bottom:26px;font-weight:300}
+.tc-who{display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid var(--line)}
+.tc-av{width:38px;height:38px;border-radius:50%;background:var(--sand);display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0}
+.tc-name{font-size:0.88rem;font-weight:700;color:var(--ink);font-family:var(--ff-en)}
+.tc-biz{font-family:var(--ff-th);font-size:0.76rem;color:var(--mist);font-weight:300}
 
 /* CONTACT */
-#contact{background:var(--cream)}
-.cnt-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start;margin-top:52px}
-.cnt-info-item{display:flex;align-items:flex-start;gap:20px;padding:22px 0;border-bottom:1px solid rgba(184,146,42,0.12)}
-.cnt-icon{width:40px;height:40px;flex-shrink:0;border:1px solid rgba(184,146,42,0.25);display:flex;align-items:center;justify-content:center;font-size:0.95rem;color:var(--gold)}
-.cnt-lbl{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin-bottom:5px;font-weight:500;font-family:var(--ff-en)}
-.cnt-val{font-size:0.93rem;color:var(--ink)}
-.cnt-val a{color:var(--gold);text-decoration:none}
+#contact{background:var(--sand)}
+.cnt-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start;margin-top:48px}
+.cnt-info-item{display:flex;align-items:flex-start;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)}
+.cnt-icon{width:42px;height:42px;flex-shrink:0;border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--moss-d)}
+.cnt-lbl{font-size:0.74rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--mist);margin-bottom:5px;font-weight:600;font-family:var(--ff-en)}
+.cnt-val{font-size:0.95rem;color:var(--ink)}
+.cnt-val a{color:var(--moss-d);text-decoration:none}
 .line-cta{
   display:inline-flex;align-items:center;gap:10px;background:#06C755;color:#fff;
-  padding:13px 24px;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;
-  font-weight:500;text-decoration:none;margin-top:28px;font-family:var(--ff-en);
-  transition:filter 0.2s;
+  padding:14px 26px;font-size:0.85rem;
+  font-weight:600;text-decoration:none;margin-top:26px;font-family:var(--ff-en);
+  border-radius:999px;transition:filter 0.2s,transform 0.2s;
 }
-.line-cta:hover{filter:brightness(0.9)}
-.form-wrap{display:flex;flex-direction:column;gap:14px}
+.line-cta:hover{filter:brightness(0.93);transform:translateY(-1px)}
+.form-wrap{display:flex;flex-direction:column;gap:14px;background:var(--white);padding:32px;border-radius:var(--r-lg);border:1px solid var(--line)}
 .fg{display:flex;flex-direction:column;gap:6px}
-.fg label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);font-weight:500;font-family:var(--ff-en)}
+.fg label{font-size:0.74rem;text-transform:uppercase;letter-spacing:0.04em;color:var(--mist);font-weight:600;font-family:var(--ff-en)}
 .fg input,.fg select,.fg textarea{
-  border:1px solid rgba(184,146,42,0.22);background:var(--white);
-  padding:12px 16px;font-size:0.9rem;font-family:var(--ff-th);font-weight:300;
+  border:1.5px solid var(--line);background:var(--paper);border-radius:var(--r-sm);
+  padding:13px 16px;font-size:0.92rem;font-family:var(--ff-th);font-weight:300;
   color:var(--ink);outline:none;transition:border-color 0.2s;
 }
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--moss)}
 .fg textarea{resize:vertical;min-height:110px}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .form-btn{
-  background:var(--gold);color:#fff;border:none;cursor:pointer;
-  padding:13px 32px;font-size:0.75rem;letter-spacing:0.14em;
-  text-transform:uppercase;font-weight:500;font-family:var(--ff-en);
-  transition:background 0.2s;align-self:flex-start;
+  background:var(--moss);color:var(--white);border:none;cursor:pointer;
+  padding:14px 32px;font-size:0.85rem;
+  font-weight:600;font-family:var(--ff-en);border-radius:999px;
+  transition:background 0.2s,transform 0.2s;align-self:flex-start;
 }
-.form-btn:hover{background:#9a7820}
+.form-btn:hover{background:var(--moss-d);transform:translateY(-1px)}
+
+/* TRUST ROW — signature promise band, echoing the brand's wrapping ritual */
+#trust{background:var(--paper);padding:64px 48px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust-row{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:32px;
+}
+.trust-item{display:flex;flex-direction:column;gap:10px}
+.trust-ic{width:30px;height:30px;border-radius:8px;background:var(--moss);display:flex;align-items:center;justify-content:center}
+.trust-h{font-family:var(--ff-en);font-size:0.92rem;font-weight:700;color:var(--ink)}
+.trust-p{font-family:var(--ff-th);font-size:0.82rem;color:var(--mist);line-height:1.6;font-weight:300}
 
 /* FOOTER */
 footer{
-  background:var(--ink);padding:48px;
+  background:var(--paper);padding:40px 48px;
   display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:32px;
+  border-top:1px solid var(--line);
 }
 .foot-logo{display:flex;align-items:center;gap:10px}
-.foot-logo img{width:26px;height:26px;object-fit:contain;filter:brightness(0.75)}
-.foot-logo span{font-family:var(--ff-en);color:rgba(255,255,255,0.65);font-size:0.95rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:300}
-.foot-tagline{font-family:var(--ff-en);font-size:0.75rem;letter-spacing:0.22em;color:var(--gold);text-align:center;font-style:italic;font-weight:300}
-.foot-copy{font-family:var(--ff-th);font-size:0.72rem;color:rgba(255,255,255,0.25);text-align:right;font-weight:300}
+.foot-logo img{width:24px;height:24px;object-fit:contain;border-radius:6px}
+.foot-logo span{font-family:var(--ff-en);color:var(--ink);font-size:0.92rem;font-weight:700}
+.foot-tagline{font-family:var(--ff-en);font-size:0.82rem;color:var(--moss-d);text-align:center;font-weight:600}
+.foot-copy{font-family:var(--ff-th);font-size:0.74rem;color:var(--mist);text-align:right;font-weight:300}
 
 /* REVEAL */
 .rv{opacity:0;transform:translateY(26px);transition:opacity 0.65s ease,transform 0.65s ease}
@@ -258,24 +288,32 @@ footer{
 
 /* MOBILE */
 @media(max-width:900px){
-  nav{padding:16px 24px}
+  nav{padding:18px 24px}
   .nav-links{display:none}
   .ham{display:flex}
   #hero{grid-template-columns:1fr;min-height:auto}
-  .hero-l{padding:100px 24px 60px}
-  .hero-r{height:340px}
+  .hero-l{padding:110px 24px 48px}
+  .hero-r{height:340px;border-radius:0}
+  .hero-stats{flex-wrap:wrap}
   section{padding:72px 24px}
   .svc-head{grid-template-columns:1fr;gap:24px}
-  .svc-grid{grid-template-columns:1fr 1fr}
-  .gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,200px)}
+  .svc-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,200px);padding:0 24px;gap:10px}
+  .gal-head{padding:0 24px}
   .gi:nth-child(1){grid-row:auto}
   .testi-row{grid-template-columns:1fr}
-  .cnt-wrap{grid-template-columns:1fr;gap:48px}
+  .cnt-wrap{grid-template-columns:1fr;gap:40px}
   .frow{grid-template-columns:1fr}
-  footer{grid-template-columns:1fr;gap:20px}
-  .foot-copy,.foot-tagline{text-align:left}
+  .trust-row{grid-template-columns:1fr 1fr;gap:24px}
+  footer{grid-template-columns:1fr;gap:16px;text-align:center}
+  .foot-copy,.foot-tagline{text-align:center}
+}
+@media(max-width:560px){
+  .svc-grid{grid-template-columns:1fr}
+  .trust-row{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -347,37 +385,37 @@ footer{
     </div>
     <div class="svc-grid rv">
       <div class="svc-card">
-        <span class="svc-num">01</span>
+        <span class="fold" aria-hidden="true"></span>
         <div class="svc-en">Perfume</div>
         <span class="svc-th" data-th="น้ำหอม" data-en="Fragrance">น้ำหอม</span>
         <p class="svc-txt" data-th="ห่อฟิล์มใสสำหรับกล่องน้ำหอม ทรงสี่เหลี่ยมและทรงพิเศษ ให้ความรู้สึก luxury ตั้งแต่แรกเห็น" data-en="Clear film for perfume boxes — square or custom shapes. Delivers luxury from first glance.">ห่อฟิล์มใสสำหรับกล่องน้ำหอม ทรงสี่เหลี่ยมและทรงพิเศษ ให้ความรู้สึก luxury ตั้งแต่แรกเห็น</p>
       </div>
       <div class="svc-card">
-        <span class="svc-num">02</span>
+        <span class="fold" aria-hidden="true"></span>
         <div class="svc-en">Cosmetics</div>
         <span class="svc-th" data-th="เครื่องสำอาง" data-en="Skincare & Beauty">เครื่องสำอาง</span>
         <p class="svc-txt" data-th="บรรจุภัณฑ์ฟิล์มใสสำหรับสกินแคร์และเครื่องสำอาง เรียบสวยทุกมุม รับ production หลายแบรนด์พร้อมกัน" data-en="Clear film wrapping for skincare and cosmetics. Pristine every angle, across multiple brands simultaneously.">บรรจุภัณฑ์ฟิล์มใสสำหรับสกินแคร์และเครื่องสำอาง เรียบสวยทุกมุม รับ production หลายแบรนด์พร้อมกัน</p>
       </div>
       <div class="svc-card">
-        <span class="svc-num">03</span>
+        <span class="fold" aria-hidden="true"></span>
         <div class="svc-en">Gift Boxes</div>
         <span class="svc-th" data-th="กล่องของขวัญ" data-en="Gift Packaging">กล่องของขวัญ</span>
         <p class="svc-txt" data-th="ห่อฟิล์มใสสำหรับของขวัญพรีเมียม เพิ่มมูลค่าและสร้างความประทับใจให้ผู้รับตั้งแต่ก่อนเปิดกล่อง" data-en="Premium gift box wrapping that adds perceived value and creates anticipation before the box is even opened.">ห่อฟิล์มใสสำหรับของขวัญพรีเมียม เพิ่มมูลค่าและสร้างความประทับใจให้ผู้รับตั้งแต่ก่อนเปิดกล่อง</p>
       </div>
       <div class="svc-card">
-        <span class="svc-num">04</span>
+        <span class="fold" aria-hidden="true"></span>
         <div class="svc-en">Lifestyle</div>
         <span class="svc-th" data-th="สินค้า Lifestyle" data-en="Lifestyle Products">สินค้า Lifestyle</span>
         <p class="svc-txt" data-th="เสื้อผ้า กระเป๋า ของใช้ในบ้าน — ทุกอย่างที่ต้องการภาพลักษณ์แบรนด์ที่แข็งแกร่งและพรีเมียม" data-en="Fashion, bags, home goods — anything that demands a strong, premium brand image.">เสื้อผ้า กระเป๋า ของใช้ในบ้าน — ทุกอย่างที่ต้องการภาพลักษณ์แบรนด์ที่แข็งแกร่งและพรีเมียม</p>
       </div>
       <div class="svc-card">
-        <span class="svc-num">05</span>
+        <span class="fold" aria-hidden="true"></span>
         <div class="svc-en">With / Without Sticker</div>
         <span class="svc-th" data-th="ติดสติกเกอร์หรือไม่ก็ได้" data-en="Sticker Option">ติดสติกเกอร์หรือไม่ก็ได้</span>
         <p class="svc-txt" data-th="เพิ่มสติกเกอร์แบรนด์ตรงกลาง X-Fold หรือเลือกแบบไม่ติดเพื่อลุคมินิมอลสะอาดตา เลือกได้ตามสไตล์คุณ" data-en="Add your brand sticker at the X-Fold center, or leave it clean for a minimalist look. Your choice.">เพิ่มสติกเกอร์แบรนด์ตรงกลาง X-Fold หรือเลือกแบบไม่ติดเพื่อลุคมินิมอลสะอาดตา เลือกได้ตามสไตล์คุณ</p>
       </div>
       <div class="svc-card">
-        <span class="svc-num">06</span>
+        <span class="fold" aria-hidden="true"></span>
         <div class="svc-en">Custom Orders</div>
         <span class="svc-th" data-th="รับงานพิเศษ" data-en="Custom">รับงานพิเศษ</span>
         <p class="svc-txt" data-th="กล่องทรงพิเศษ ขนาดใหญ่ หรือจำนวนมาก? สอบถามได้เลย — เราพร้อมดูแลทุกออเดอร์ด้วยมาตรฐานเดียวกัน" data-en="Unusual shapes, oversized boxes, or large volume? Ask us — we handle every order to the same standard.">กล่องทรงพิเศษ ขนาดใหญ่ หรือจำนวนมาก? สอบถามได้เลย — เราพร้อมดูแลทุกออเดอร์ด้วยมาตรฐานเดียวกัน</p>
@@ -393,37 +431,39 @@ footer{
       <div class="s-tag" data-th="อัตราค่าบริการ" data-en="Pricing">อัตราค่าบริการ</div>
       <h2 class="s-h2"><em>ยิ่งมากยิ่งคุ้ม</em></h2>
     </div>
-    <table class="price-table rv">
-      <thead>
-        <tr>
-          <th data-th="จำนวน" data-en="Quantity">จำนวน</th>
-          <th data-th="ราคาเริ่มต้น / ชิ้น" data-en="Starting Price / Piece">ราคาเริ่มต้น / ชิ้น</th>
-          <th data-th="หมายเหตุ" data-en="Note">หมายเหตุ</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="th" data-th="50 ชิ้นขึ้นไป" data-en="50 pieces+">50 ชิ้นขึ้นไป</td>
-          <td><span class="price-num">20</span> <span class="th" style="font-size:0.82rem;color:var(--mid)" data-th="บาท" data-en="THB">บาท</span></td>
-          <td class="th" style="font-size:0.83rem;color:var(--mid)" data-th="Small Quantity, Premium Quality" data-en="Small Quantity, Premium Quality">Small Quantity, Premium Quality</td>
-        </tr>
-        <tr>
-          <td class="th" data-th="100 ชิ้นขึ้นไป" data-en="100 pieces+">100 ชิ้นขึ้นไป</td>
-          <td><span class="price-num">16</span> <span class="th" style="font-size:0.82rem;color:var(--mid)" data-th="บาท" data-en="THB">บาท</span></td>
-          <td class="th" style="font-size:0.83rem;color:var(--mid)" data-th="ราคาดีสำหรับออเดอร์ medium" data-en="Great value for medium orders">ราคาดีสำหรับออเดอร์ medium</td>
-        </tr>
-        <tr>
-          <td class="th" data-th="300 ชิ้นขึ้นไป" data-en="300 pieces+">300 ชิ้นขึ้นไป</td>
-          <td><span class="price-num">12</span> <span class="th" style="font-size:0.82rem;color:var(--mid)" data-th="บาท" data-en="THB">บาท</span></td>
-          <td class="th" style="font-size:0.83rem;color:var(--mid)" data-th="ประหยัดสำหรับ bulk order" data-en="Economical for bulk production">ประหยัดสำหรับ bulk order</td>
-        </tr>
-        <tr>
-          <td class="th" data-th="500 ชิ้นขึ้นไป" data-en="500 pieces+">500 ชิ้นขึ้นไป</td>
-          <td style="color:var(--gold)" class="th" data-th="สอบถามรายละเอียด" data-en="Inquire for special rate">สอบถามรายละเอียด</td>
-          <td class="th" style="font-size:0.83rem;color:var(--mid)" data-th="ราคาพิเศษสำหรับลูกค้า volume สูง" data-en="Special rates for high-volume clients">ราคาพิเศษสำหรับลูกค้า volume สูง</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="price-card rv">
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th data-th="จำนวน" data-en="Quantity">จำนวน</th>
+            <th data-th="ราคาเริ่มต้น / ชิ้น" data-en="Starting Price / Piece">ราคาเริ่มต้น / ชิ้น</th>
+            <th data-th="หมายเหตุ" data-en="Note">หมายเหตุ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="th" data-th="50 ชิ้นขึ้นไป" data-en="50 pieces+">50 ชิ้นขึ้นไป</td>
+            <td><span class="price-num">20</span> <span class="th" style="font-size:0.82rem;color:var(--mist)" data-th="บาท" data-en="THB">บาท</span></td>
+            <td class="th" style="font-size:0.83rem;color:var(--mist)" data-th="Small Quantity, Premium Quality" data-en="Small Quantity, Premium Quality">Small Quantity, Premium Quality</td>
+          </tr>
+          <tr>
+            <td class="th" data-th="100 ชิ้นขึ้นไป" data-en="100 pieces+">100 ชิ้นขึ้นไป</td>
+            <td><span class="price-num">16</span> <span class="th" style="font-size:0.82rem;color:var(--mist)" data-th="บาท" data-en="THB">บาท</span></td>
+            <td class="th" style="font-size:0.83rem;color:var(--mist)" data-th="ราคาดีสำหรับออเดอร์ medium" data-en="Great value for medium orders">ราคาดีสำหรับออเดอร์ medium</td>
+          </tr>
+          <tr>
+            <td class="th" data-th="300 ชิ้นขึ้นไป" data-en="300 pieces+">300 ชิ้นขึ้นไป</td>
+            <td><span class="price-num">12</span> <span class="th" style="font-size:0.82rem;color:var(--mist)" data-th="บาท" data-en="THB">บาท</span></td>
+            <td class="th" style="font-size:0.83rem;color:var(--mist)" data-th="ประหยัดสำหรับ bulk order" data-en="Economical for bulk production">ประหยัดสำหรับ bulk order</td>
+          </tr>
+          <tr>
+            <td class="th" data-th="500 ชิ้นขึ้นไป" data-en="500 pieces+">500 ชิ้นขึ้นไป</td>
+            <td style="color:var(--clay)" class="th" data-th="สอบถามรายละเอียด" data-en="Inquire for special rate">สอบถามรายละเอียด</td>
+            <td class="th" style="font-size:0.83rem;color:var(--mist)" data-th="ราคาพิเศษสำหรับลูกค้า volume สูง" data-en="Special rates for high-volume clients">ราคาพิเศษสำหรับลูกค้า volume สูง</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <p class="price-note" data-th="ราคาขึ้นอยู่กับขนาดของกล่องและรายละเอียดงาน สอบถามเพิ่มเติมได้ทาง LINE หรือ Email" data-en="Prices vary by box size and specifications. Contact us via LINE or Email for details.">ราคาขึ้นอยู่กับขนาดของกล่องและรายละเอียดงาน สอบถามเพิ่มเติมได้ทาง LINE หรือ Email</p>
   </div>
 </section>
@@ -560,6 +600,32 @@ footer{
           <button class="form-btn" onclick="handleSubmit(this)" data-th="ส่งข้อความ" data-en="Send Message">ส่งข้อความ</button>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section id="trust">
+  <div class="trust-row rv">
+    <div class="trust-item">
+      <div class="trust-ic"><span class="fold" aria-hidden="true" style="background:#fff"></span></div>
+      <div class="trust-h" data-th="พับด้วยมือทุกชิ้น" data-en="Hand-Folded">พับด้วยมือทุกชิ้น</div>
+      <div class="trust-p th" data-th="ไม่มีเครื่องจักร ทุกขอบพับด้วยความใส่ใจของช่าง" data-en="No machines — every edge is creased and folded by a trained hand.">ไม่มีเครื่องจักร ทุกขอบพับด้วยความใส่ใจของช่าง</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-ic"><span class="fold" aria-hidden="true" style="background:#fff"></span></div>
+      <div class="trust-h" data-th="รับประกันทุกออเดอร์" data-en="We Guarantee It">รับประกันทุกออเดอร์</div>
+      <div class="trust-p th" data-th="ชิ้นไหนไม่ผ่านมาตรฐาน เราทำใหม่ให้ไม่มีค่าใช้จ่าย" data-en="Any piece that doesn't meet our standard, we rewrap free of charge.">ชิ้นไหนไม่ผ่านมาตรฐาน เราทำใหม่ให้ไม่มีค่าใช้จ่าย</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-ic"><span class="fold" aria-hidden="true" style="background:#fff"></span></div>
+      <div class="trust-h" data-th="ตอบกลับไวภายในวัน" data-en="We Reply Fast">ตอบกลับไวภายในวัน</div>
+      <div class="trust-p th" data-th="ทักมาทาง LINE หรืออีเมล เราตอบกลับภายในวันทำการ" data-en="Message us on LINE or email — we respond within one business day.">ทักมาทาง LINE หรืออีเมล เราตอบกลับภายในวันทำการ</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-ic"><span class="fold" aria-hidden="true" style="background:#fff"></span></div>
+      <div class="trust-h" data-th="ปกป้องสิ่งที่คุณภูมิใจ" data-en="We Protect What's Yours">ปกป้องสิ่งที่คุณภูมิใจ</div>
+      <div class="trust-p th" data-th="ทุกชิ้นถูกห่ออย่างพิถีพิถัน เหมือนเป็นสินค้าของเราเอง" data-en="Every piece is wrapped with the same care we'd give our own product.">ทุกชิ้นถูกห่ออย่างพิถีพิถัน เหมือนเป็นสินค้าของเราเอง</div>
     </div>
   </div>
 </section>
